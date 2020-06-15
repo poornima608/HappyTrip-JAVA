@@ -1,0 +1,10 @@
+node {
+  git url: 'https://github.com/poornima608/HappyTrip-JAVA.git'
+ 
+  sh '''
+          cd happytrip-code
+          mvn clean install
+          mvn -B verify
+    '''
+
+}
