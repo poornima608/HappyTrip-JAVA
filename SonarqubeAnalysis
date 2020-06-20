@@ -3,7 +3,7 @@ node {
 	git url: 'https://gitlab.com/9113947774/HappyTrip-JAVA.git'
 	}
 	stage('build') {
-	def mvnHome = tool name: 'Maven-3', type:'maven'
+	def mvnHome = tool name: 'Maven', type:'maven'
 	bat '''
 			cd happytrip-code
 			mvn clean install
