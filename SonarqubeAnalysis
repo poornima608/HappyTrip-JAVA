@@ -1,16 +1,12 @@
-node{
-stage('SOM Checkout'){
-git 'https://github.com/poornima608/HappyTrip-JAVA'
-}
-stage('compile-Package'){
-def mvnHome = tool name: 'maven-3', type:'maven'
-sh "${mvnHome}/bin/mvn package"
-}
-stage('SonarQube Analysis') 
-{
-def mvnHome = tool name: 'maven-3', type:'maven'
-withSonarqubeEnv('Sonar-6'){
-sh "${mvnHome}/bin/mvn sonar:sonar"
-}
-}
+node {
+	stage ('checkout') {
+	git url: 'https://gitlab.com/9113947774/HappyTrip-JAVA.git'
+	}
+	stage('build') {
+	def mvnHome = tool name: 'Maven-3', type:'maven'
+	bat '''
+			cd happytrip-code
+			mvn clean install
+	'''
+	}
 }
